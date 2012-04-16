@@ -1,0 +1,23 @@
+class PageController < ApplicationController
+  def index
+    #completed
+    @contracts=Contract.findall()
+  end
+
+  def about
+  end
+
+  def hire
+  end
+
+  def managecontracts
+  end
+
+  def usercontracts
+    #pending
+    #available
+    #current
+  end
+  
+
+end

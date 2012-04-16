@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  client: MyString
+  requestedBy: MyString
+  price: MyString
+  instructions: MyString
+  asssigned: MyString
+  pending: false
+  open: false
+
+two:
+  client: MyString
+  requestedBy: MyString
+  price: MyString
+  instructions: MyString
+  asssigned: MyString
+  pending: false
+  open: false

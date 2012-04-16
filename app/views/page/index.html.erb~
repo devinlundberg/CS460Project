@@ -1,0 +1,108 @@
+<div id="wrapper">
+  <div id="header-wrapper">
+    <div id="header">
+      <div id="logo">
+      <h1>
+	<a href="#">Ankh-Morpork Assassins' Guild</a>
+      </h1>
+      <p>Nil Mortifi Sine Lucre<a href="http://www.freecsstemplates.org/">
+      </a>
+    </p>
+  </div>
+</div>
+</div>
+	
+<div id="menu">
+  <ul>
+    <li class="current_page_item">
+      <a href="#">Homepage</a>
+    </li>
+    <% if user_signed_in? %>
+      <li>
+      <%=link_to 'Log Out',destroy_user_session_path, :method => :delete %>
+      </li>
+      <li>
+        <a href="usercontracts.php">My&nbsp;&nbsp;Contracts</a>
+      </li>
+      <%if current_user.admin%>
+	<li>
+	    <a href="managecontracts.php">Manage&nbsp;&nbsp;Contracts</a>
+	  </li>
+      <%end%>
+    <%else%>
+	<li>
+	  <a href="login.php">Log&nbsp;&nbsp;In</a>
+	</li>
+	<li>
+	      <a href="about.php">About</a>
+	    </li>
+	    <li>
+		<a href="hire.php">Hire&nbsp;&nbsp;Us</a>
+	      </li>
+     <%end%>
+      
+	
+      
+<!--    <?php if ($logged_in) {echo "";} else {echo "<li>
+      <a href=\"login.php\">Log&nbsp;&nbsp;In</a>
+    </li>";}
+      echo $logged_in ? "<li>
+	<a href=\"usercontracts.php\">My&nbsp;&nbsp;Contracts</a>
+      </li>" : "";
+	if ($logged_in and ($_SESSION['level'] > 9000))
+	{
+	  echo "<li>
+	    <a href=\"managecontracts.php\">Manage&nbsp;&nbsp;Contracts</a>
+	  </li>";
+	  }
+	    echo $user ? "" : "<li>
+	      <a href=\"about.php\">About</a>
+	    </li>";
+	      echo $user ? "" : "<li>
+		<a href=\"hire.php\">Hire&nbsp;&nbsp;Us</a>
+	      </li>";
+		?>-->
+	      </ul>
+	    </div>
+	    <!-- end #menu -->
+	    <div id="page">
+	      <div id="page-bgtop">
+		<div id="page-bgbtm">
+		  <div id="content">
+		    <div class="post">
+		      <h2 class="title">
+			<a href="#">Successfully Completed Contracts</a>
+		      </h2>
+		      <div class="entry">
+			<table border="1">
+			  <tr>
+			    <td>Client</td>
+			    <td>Inhumed By</td>
+			  </tr>
+<!--			  <?php
+			  $results = get_completed_contracts();
+			  foreach ($results as $contract)
+			  {
+			  $id = $contract["Assigned"];
+			  $client = $contract["Client"];
+			  $name = get_real_name($id);
+			  echo "<tr>
+			    <td>$client</td>
+			    <td>$name</td>
+			  </tr>";
+			  }
+			    ?>-->
+			  </table>
+			</div>
+		      </div>
+		    </div>
+		    <!-- end #content -->
+		    <div id="sidebar">
+		    </div>
+		    <!-- end #sidebar -->
+		    <div style="clear: both;">&nbsp;</div>
+		  </div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>

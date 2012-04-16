@@ -1,0 +1,63 @@
+<div id="wrapper">
+	<div id="header-wrapper">
+		<div id="header">
+			<div id="logo">
+				<h1><a href="#">Ankh-Morpork Assassins' Guild</a></h1>
+				<p>Nil Mortifi Sine Lucre<a href="http://www.freecsstemplates.org/"></a></p>
+			</div>
+		</div>
+	</div>
+	<!-- end #header -->
+	<div id="menu">
+		<ul>
+			<li><%=link_to 'Homepage',index_path %></li>
+			<li class="current_page_item"><a href="#">Log&nbsp;&nbsp;In</a></li>
+			<li><%=link_to 'About',about_path %></li>
+			<li><%=link_to 'Hire Us',hire_path %></li>
+		</ul>
+	</div>
+	<!-- end #menu -->
+	<div id="page">
+		<div id="page-bgtop">
+			<div id="page-bgbtm">
+				<div id="content">
+					<div class="post">
+						<h2 class="title"><a href="#">Please enter your log-in information</a>						</h2>
+						<div class="entry">
+						  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div><%= f.label :username %><br />
+  <%= f.text_field :email %></div>
+
+  <div><%= f.label :password %><br />
+  <%= f.password_field :password %></div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+  <% end -%>
+
+  <div><%= f.submit "Sign in" %></div>
+<% end %>
+
+<%= render "links" %>
+
+
+<p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+					   </div>
+				  </div>
+					<div style="clear: both;">&nbsp;</div>
+				</div>
+				<!-- end #content -->
+				<div id="sidebar">
+					<ul>
+						<li></li>
+						<li> </li>
+					</ul>
+				</div>
+				<!-- end #sidebar -->
+				<div style="clear: both;">&nbsp;</div>
+			</div>
+		</div>
+	</div>
+	<!-- end #page -->
+</div>
