@@ -13,6 +13,11 @@
 			<li><a href="index.php">Homepage</a></li>
 			<li><a href="index.php?logout=true">Log&nbsp;&nbsp;Out</a></li>
 			<li class="current_page_item"><a href="usercontracts.php">My&nbsp;&nbsp;Contracts</a></li>
+                        <%if current_user.admin%>
+                          <li>
+                          <a href="managecontracts.php">Manage&nbsp;&nbsp;Contracts</a>
+                          </li>
+                        <%end%>
      <!--       <?php
 				if ($_SESSION["level"] > 9000)
 				{
@@ -29,6 +34,28 @@
 					<div class="post">
 						<h2 class="title"><a href="#">My Current Contracts</a></h2>
 						<div class="entry">
+<% if not @current %>
+<p>You have no open contracts.</p>
+<%else %>
+<%= form_tag do%>
+<table border="1"><tr><td>Client</td><td>Value</td><td>Requested By</td><td>Special Instructions</td><td>Complete</td><td>Cancel</td></tr>
+<% @current.each do |contract| %>
+
+
+                            <tr>
+                              <td><%=contract.client%></td>
+<td><%=number_to_currency(contract.price, :unit => "$")%></td>
+<td><%=contract.requestedBy%></td>
+<td><%=contract.instructions%></td>
+<td> <%= check_box_tag("completed[]") %></td>
+<td> <%= check_box_tag("cancel[]") %></td>
+                            </tr>
+
+
+                          <%end%>
+<tr><td><input type=submit value="Update"></td></tr></table>  
+<%end%>
+<%end%>
 							<!--<?php
 								$results = my_contracts($_SESSION["user"]);
 								if (count($results) == 0)
@@ -45,7 +72,11 @@
 										$value = $entry["Price"];
 										$requestor = $entry["Requested By"];
 										$instructions = $entry["Special Instructions"];
-										echo "<tr><td>$client</td><td>AM\$$value</td><td>$requestor</td><td>$instructions</td><td><input type=\"checkbox\" value=\"$client\" name=\"completed[]\" /></td><td><input type=\"checkbox\" value=\"$client\" name=\"cancel[]\" /></td></tr>";
+										echo "<tr><td>$client</td><td>AM\$$value</td>
+<td>$requestor</td>
+<td>$instructions</td>
+<td><input type=\"checkbox\" value=\"$client\" name=\"completed[]\" /></td>
+<td><input type=\"checkbox\" value=\"$client\" name=\"cancel[]\" /></td></tr>";
 									}
 									echo '<tr><td><input type=submit value="Update"></td></tr></table>';
 									echo "</form>";
@@ -56,6 +87,28 @@
 					<div class="post">
 						<h2 class="title"><a href="#">My Pending Contracts</a></h2>
 						<div class="entry">
+
+<% if not @pending %>
+<p>You have no pending contracts.</p>
+<%else %>
+<%= form_tag do%>
+<table border="1"><tr><td>Client</td><td>Value</td><td>Requested By</td><td>Special Instructions</td><td>Cancel Application</td></tr>
+<% @pending.each do |contract| %>
+
+
+                            <tr>
+                              <td><%=contract.client%></td>
+<td><%=number_to_currency(contract.price, :unit => "$")%></td>
+<td><%=contract.requestedBy%></td>
+<td><%=contract.instructions%></td>
+<td> <%= check_box_tag("cancel[]") %></td>
+                            </tr>
+
+
+                          <%end%>
+<tr><td><input type=submit value="Update"></td></tr></table>  
+<%end%>
+<%end%>
 							<!--<?php
 								$results = pending_contracts($_SESSION["user"]);
 								if (count($results) == 0)
@@ -72,7 +125,9 @@
 										$value = $entry["Price"];
 										$requestor = $entry["Requested By"];
 										$instructions = $entry["Special Instructions"];
-										echo "<tr><td>$client</td><td>AM\$$value</td><td>$requestor</td><td>$instructions</td><td><input type=\"checkbox\" value=\"$client\" name=\"cancel[]\" /></td></tr>";
+										echo "<tr><td>$client</td>
+<td>AM\$$value</td>
+<td>$requestor</td><td>$instructions</td><td><input type=\"checkbox\" value=\"$client\" name=\"cancel[]\" /></td></tr>";
 									}
 									echo '<tr><td><input type=submit value="Update"></td></tr></table>';
 									echo "</form>";
@@ -83,6 +138,29 @@
 					<div class="post">
 					  <h2 class="title"><a href="#">Available Contracts</a></h2>
 						<div class="entry">
+<% if not @available %>
+<p>There are no available contracts at this time. Please check back later.</p>
+<%else %>
+<%= form_tag do%>
+<table border="1"><tr><td>Client</td><td>Value</td><td>Requested By</td><td>Special Instructions</td><td>Cancel Application</td></tr>
+<% @available.each do |contract| %>
+
+
+                            <tr>
+                              <td><%=contract.client%></td>
+<td><%=number_to_currency(contract.price, :unit => "$")%></td>
+<td><%=contract.requestedBy%></td>
+<td><%=contract.instructions%></td>
+<td> <%= check_box_tag("apply[]") %></td>
+                            </tr>
+
+
+                          <%end%>
+<tr><td><input type=submit value="Apply For Contract(s)"></td></tr></table>  
+<%end%>
+<%end%>
+
+
                         <!--<?php
 								$results = available_contracts();
 								if (count($results) == 0)

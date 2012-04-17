@@ -79,6 +79,13 @@
 			    <td>Client</td>
 			    <td>Inhumed By</td>
 			  </tr>
+                          <% @contracts.each do |contract| %>
+                            <tr>
+                              <td><%=contract.client%></td>
+                              <td><%=contract.user.name%></td>
+                            </tr>
+                          <%end%>
+                              
 <!--			  <?php
 			  $results = get_completed_contracts();
 			  foreach ($results as $contract)
