@@ -18,6 +18,19 @@ class PageController < ApplicationController
     if not current_user.admin
       redirect_to(root_path)
     end
+    if request.post?
+      completed=params[:complete]
+      canceled=params[:cancel]
+      accepted=params[:accept]
+      denied=params[:deny]
+      deleted=params[:delete]
+      unlisted=params[:unlist]
+      
+      completed.each do |id|
+        Contract.find(id)
+        
+      end
+    end
     #open
     @current=Contract.where("pending"=>false,"open"=>true)
     #pending
@@ -27,7 +40,13 @@ class PageController < ApplicationController
   end
 
   def usercontracts
-    
+    if request.post?
+      completed=params[:complete]
+      canceled=params[:cancel]
+      applied=params[:apply]
+      
+      
+    end
     #pending
     @pending=current_user.contracts.where("pending"=>true)
     #available

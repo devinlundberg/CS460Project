@@ -37,8 +37,8 @@
 <td><%=number_to_currency(contract.price, :unit => "$")%></td>
 <td><%=contract.requestedBy%></td>
 <td><%=contract.instructions%></td>
-<td> <%= check_box_tag("delete[]") %></td>
-<td> <%= check_box_tag("unlist[]") %></td>
+<td> <%= check_box_tag("delete[]",value=contract.id) %></td>
+<td> <%= check_box_tag("unlist[]",value=contract.id) %></td>
                             </tr>
 
 
@@ -88,8 +88,8 @@
 <td><%=contract.requestedBy%></td>
 <td><%=contract.instructions%></td>
 <td><%=contract.user.name if contract.user%></td>
-<td> <%= check_box_tag("accept[]") %></td>
-<td> <%= check_box_tag("deny[]") %></td>
+<td> <%= check_box_tag("accept[]",value=contract.id) %></td>
+<td> <%= check_box_tag("deny[]",value=contract.id) %></td>
                             </tr>
 
 
@@ -139,8 +139,8 @@
 <td><%=number_to_currency(contract.price, :unit => "$")%></td>
 <td><%=contract.requestedBy%></td>
 <td><%=contract.instructions%></td>
-<td> <%= check_box_tag("completed[]") %></td>
-<td> <%= check_box_tag("cancel[]") %></td>
+<td> <%= check_box_tag("completed[]",value=contract.id) %></td>
+<td> <%= check_box_tag("cancel[]",value=contract.id) %></td>
                             </tr>
 
 

@@ -37,8 +37,8 @@
 <td><%=number_to_currency(contract.price, :unit => "$")%></td>
 <td><%=contract.requestedBy%></td>
 <td><%=contract.instructions%></td>
-<td> <%= check_box_tag("delete[]") %></td>
-<td> <%= check_box_tag("unlist[]") %></td>
+<td> <%= check_box_tag("delete[]",value=contract.id) %></td>
+<td> <%= check_box_tag("unlist[]",value=contract.id) %></td>
                             </tr>
 
 

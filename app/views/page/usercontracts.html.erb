@@ -47,8 +47,8 @@
 <td><%=number_to_currency(contract.price, :unit => "$")%></td>
 <td><%=contract.requestedBy%></td>
 <td><%=contract.instructions%></td>
-<td> <%= check_box_tag("completed[]") %></td>
-<td> <%= check_box_tag("cancel[]") %></td>
+<td> <%= check_box_tag("completed[]",value=contract.id) %></td>
+<td> <%= check_box_tag("cancel[]",value=contract.id) %></td>
                             </tr>
 
 
@@ -101,7 +101,7 @@
 <td><%=number_to_currency(contract.price, :unit => "$")%></td>
 <td><%=contract.requestedBy%></td>
 <td><%=contract.instructions%></td>
-<td> <%= check_box_tag("cancel[]") %></td>
+<td> <%= check_box_tag("cancel[]",value=contract.id) %></td>
                             </tr>
 
 
@@ -151,7 +151,7 @@
 <td><%=number_to_currency(contract.price, :unit => "$")%></td>
 <td><%=contract.requestedBy%></td>
 <td><%=contract.instructions%></td>
-<td> <%= check_box_tag("apply[]") %></td>
+<td> <%= check_box_tag("apply[]",value=contract.id) %></td>
                             </tr>
 
 

@@ -142,7 +142,7 @@
 <p>There are no available contracts at this time. Please check back later.</p>
 <%else %>
 <%= form_tag do%>
-<table border="1"><tr><td>Client</td><td>Value</td><td>Requested By</td><td>Special Instructions</td><td>Cancel Application</td></tr>
+<table border="1"><tr><td>Client</td><td>Value</td><td>Requested By</td><td>Special Instructions</td><td>Apply</td></tr>
 <% @available.each do |contract| %>
 
 
