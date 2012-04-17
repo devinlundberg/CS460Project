@@ -29,41 +29,41 @@
 				  </div>
 					<div class="post">
 						<h2 class="title"><a href="#">Please enter your contract information</a>						</h2>
-						<!--<div class="entry">
-						  <form action="hire.php" method="post">
+						<div class="entry">
+						  <%= form_tag do%>
                           <table width="100%" border="1" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td>Your name:</td>
-                                <td><input type="text" size=40 name="requestor" /></td>
+                                <td><%= text_field_tag("requester") %></td>
                               </tr>
                               <tr>
                                 <td>Name of client:</td>
-                                <td><input type="text" size=40 name="client" /></td>
+                                <td><%= text_field_tag("client") %></td>
                               </tr>
                               <tr>
                                 <td>Price:</td>
-                                <td><input type="number" size=40 name="price" /></td>
+                                <td><%= text_field_tag("price") %></td>
                               </tr>
                               <tr>
                                 <td>Special Instructions::</td>
-                                <td><input type="text" size=40 name="special" /></td>
+                                <td><%= text_field_tag("special") %></td>
                               </tr>
                             </table>
-                              <?php
+                              <!--<?php
 							  	require_once('recaptchalib.php');
 								$publickey = '6Lf1s88SAAAAAMlnIJd49qTm5kYB4qWdZYQIqkiF';
 								echo recaptcha_get_html($publickey)
-							  ?>
-                            <input type="submit" value="Submit" />
+							  ?>-->
+                            <%= submit_tag("Submit") %>
                             <input type="reset" value="Clear" />
-                          </form>
-                            <?php
+                          <%end%>
+                            <!--<?php
 								if (isset($_POST["client"]) and !isset($captcha_error))
 								{
 									echo "Thank you for your patronage!";
 								}
-							?>
-					   </div>-->
+							?>-->
+					   </div>
 				  </div>
 					<div style="clear: both;">&nbsp;</div>
 				</div>

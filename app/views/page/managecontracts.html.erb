@@ -24,6 +24,29 @@
 					<div class="post">
 					  <h2 class="title"><a href="#">Available Contracts</a></h2>
 						<div class="entry">
+<% if not @available %>
+<p>There are no available contracts at this time. Please check back later.</p>
+<%else %>
+<%= form_tag do%>
+<table border="1"><tr><td>Client</td><td>Value</td><td>Requested By</td><td>Special Instructions</td><td>Delete</td><td>Unlist</td></tr>
+<% @available.each do |contract| %>
+
+
+                            <tr>
+                              <td><%=contract.client%></td>
+<td><%=number_to_currency(contract.price, :unit => "$")%></td>
+<td><%=contract.requestedBy%></td>
+<td><%=contract.instructions%></td>
+<td> <%= check_box_tag("delete[]") %></td>
+<td> <%= check_box_tag("unlist[]") %></td>
+                            </tr>
+
+
+                          <%end%>
+<tr><td><input type=submit value="Save Changes"></td></tr></table>  
+<%end%>
+<%end%>
+
                         <!--<?php
 								$results = available_contracts();
 								if (count($results) == 0)
@@ -51,6 +74,29 @@
 					<div class="post">
 					  <h2 class="title"><a href="#">Pending Contracts</a></h2>
 						<div class="entry">
+<% if not @pending %>
+<p>There are no pending contracts at this time. Please check back later.</p>
+<%else %>
+<%= form_tag do%>
+<table border="1"><tr><td>Client</td><td>Value</td><td>Requested By</td><td>Special Instructions</td><td>Applicant</td><td>Accept</td><td>Deny</td></tr>
+<% @pending.each do |contract| %>
+
+
+                            <tr>
+                              <td><%=contract.client%></td>
+<td><%=number_to_currency(contract.price, :unit => "$")%></td>
+<td><%=contract.requestedBy%></td>
+<td><%=contract.instructions%></td>
+<td><%=contract.user.name if contract.user%></td>
+<td> <%= check_box_tag("accept[]") %></td>
+<td> <%= check_box_tag("deny[]") %></td>
+                            </tr>
+
+
+                          <%end%>
+<tr><td><input type=submit value="Save Changes"></td></tr></table>  
+<%end%>
+<%end%>
                      <!--   <?php
 								$results = pending_approval();
 								if (count($results) == 0)
@@ -80,6 +126,28 @@
 					<div class="post">
 					  <h2 class="title"><a href="#">Open Contracts</a></h2>
 						<div class="entry">
+<% if not @current %>
+<p>There are no open contracts.</p>
+<%else %>
+<%= form_tag do%>
+<table border="1"><tr><td>Client</td><td>Value</td><td>Requested By</td><td>Special Instructions</td><td>Complete</td><td>Cancel</td></tr>
+<% @current.each do |contract| %>
+
+
+                            <tr>
+                              <td><%=contract.client%></td>
+<td><%=number_to_currency(contract.price, :unit => "$")%></td>
+<td><%=contract.requestedBy%></td>
+<td><%=contract.instructions%></td>
+<td> <%= check_box_tag("completed[]") %></td>
+<td> <%= check_box_tag("cancel[]") %></td>
+                            </tr>
+
+
+                          <%end%>
+<tr><td><input type=submit value="Update"></td></tr></table>  
+<%end%>
+<%end%>
                  <!--       <?php
 								$results = open_contracts();
 								if (count($results) == 0)
@@ -106,7 +174,8 @@
 						?>
 						</div>-->
 					</div>
-				</div>
+				<div style="clear: both;">&nbsp;</div>
+                </div>
 				<!-- end #content -->
 				<div id="sidebar">
 				</div>
