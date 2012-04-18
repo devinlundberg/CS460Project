@@ -19,17 +19,49 @@ class PageController < ApplicationController
       redirect_to(root_path)
     end
     if request.post?
-      completed=params[:complete]
-      canceled=params[:cancel]
       accepted=params[:accept]
       denied=params[:deny]
       deleted=params[:delete]
       unlisted=params[:unlist]
-      
-      completed.each do |id|
-        Contract.find(id)
-        
+      if accepted
+      accepted.each do |id|
+        contract=Contract.find(id)
+        if contract
+          contract.pending=false
+          contract.save
+        end
       end
+      end
+      if denied
+      denied.each do |id|
+        contract=Contract.find(id)
+        if contract
+          contract.pending=false
+          contract.user=nil
+          contract.save
+        end
+      end
+      end
+      if deleted
+      deleted.each do |id|
+        contract=Contract.find(id)
+        if contract
+          contract.destroy
+        end
+      end
+      end
+      if unlisted
+      unlisted.each do |id|
+        contract=Contract.find(id)
+        if contract
+          contract.instructions="Unlisted"
+          contract.user=nil
+          contract.pending=false
+          contract.save
+        end
+      end
+      end
+      
     end
     #open
     @current=Contract.where("pending"=>false,"open"=>true)
@@ -41,10 +73,38 @@ class PageController < ApplicationController
 
   def usercontracts
     if request.post?
-      completed=params[:complete]
+      completed=params[:completed]
       canceled=params[:cancel]
       applied=params[:apply]
-      
+      if completed
+      completed.each do |id|
+        contract=current_user.contracts.find(id)
+        if contract
+          contract.open=false
+          contract.save
+        end
+      end
+      end
+      if canceled
+      canceled.each do |id|
+        contract=current_user.contracts.find(id)
+        if contract
+          contract.pending=false
+          contract.user=nil
+          contract.save
+        end
+      end
+      end
+      if applied
+      applied.each do |id|
+        contract=Contract.find(id)
+        if contract
+          contract.pending=true
+          contract.user=current_user
+          contract.save
+        end
+      end
+      end
       
     end
     #pending
