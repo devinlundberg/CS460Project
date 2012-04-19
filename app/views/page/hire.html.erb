@@ -48,6 +48,11 @@
                                 <td>Special Instructions::</td>
                                 <td><%= text_field_tag("special",@contract.instructions) %></td>
                               </tr>
+<tr>
+<td><%= label_tag :humanizer_answer, @contract.humanizer_question %></td>
+<td><%= text_field_tag( :humanizer_answer )%>
+<%= hidden_field_tag :humanizer_question_id,@contract.humanizer_question_id %></td>
+</tr>
                             </table>
                               <!--<?php
 							  	require_once('recaptchalib.php');

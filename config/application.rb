@@ -35,6 +35,9 @@ module Cs460webserver
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
+    
+    config.force_ssl = true
+
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]

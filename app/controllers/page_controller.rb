@@ -1,7 +1,7 @@
 class PageController < ApplicationController
   
   before_filter :authenticate_user!, :only => [:usercontracts,:managecontracts]
- 
+  protect_from_forgery :secret => "Yea This is a pretty lame secret but whatevs....32196756"
   
   def index
     #completed
@@ -22,6 +22,8 @@ class PageController < ApplicationController
       @contract.price=price
       @contract.instructions=instructions
       @contract.requestedBy=requester
+      @contract.humanizer_answer=params[:humanizer_answer]
+      @contract.humanizer_question_id=params[:humanizer_question_id]
       if @contract.save
         redirect_to hire_path, :notice => 'Thank you for your patronage!'
       else
