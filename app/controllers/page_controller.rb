@@ -12,6 +12,12 @@ class PageController < ApplicationController
   end
 
   def hire
+    if request.post?
+      requester=params[:requester]
+      client=params[:client]
+      price=params[:price]
+      instructions=params[:special]
+    end
   end
 
   def managecontracts
