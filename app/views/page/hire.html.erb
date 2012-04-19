@@ -34,19 +34,19 @@
                           <table width="100%" border="1" cellspacing="0" cellpadding="0">
                               <tr>
                                 <td>Your name:</td>
-                                <td><%= text_field_tag("requester") %></td>
+                                <td><%= text_field_tag("requester",@contract.requestedBy) %></td>
                               </tr>
                               <tr>
                                 <td>Name of client:</td>
-                                <td><%= text_field_tag("client") %></td>
+                                <td><%= text_field_tag("client",@contract.client) %></td>
                               </tr>
                               <tr>
                                 <td>Price:</td>
-                                <td><%= text_field_tag("price") %></td>
+                                <td><%= text_field_tag("price",@contract.price) %></td>
                               </tr>
                               <tr>
                                 <td>Special Instructions::</td>
-                                <td><%= text_field_tag("special") %></td>
+                                <td><%= text_field_tag("special",@contract.instructions) %></td>
                               </tr>
                             </table>
                               <!--<?php
@@ -64,9 +64,12 @@
 								}
 							?>-->
 					   </div>
+<p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
 				  </div>
 					<div style="clear: both;">&nbsp;</div>
 				</div>
+
 				<!-- end #content -->
 				<div id="sidebar">
 					<ul>

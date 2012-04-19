@@ -19,10 +19,10 @@ ActiveRecord::Schema.define(:version => 20120415220343) do
     t.decimal  "price"
     t.string   "instructions"
     t.integer  "user_id"
-    t.boolean  "pending"
-    t.boolean  "open"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.boolean  "pending",      :default => false
+    t.boolean  "open",         :default => true
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "users", :force => true do |t|

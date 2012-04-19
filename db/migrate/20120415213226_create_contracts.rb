@@ -6,8 +6,8 @@ class CreateContracts < ActiveRecord::Migration
       t.decimal :price
       t.string :instructions
       t.integer :user_id
-      t.boolean :pending
-      t.boolean :open
+      t.boolean :pending,:default =>false
+      t.boolean :open,:default =>true
 
       t.timestamps
     end

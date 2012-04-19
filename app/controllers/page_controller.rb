@@ -17,7 +17,18 @@ class PageController < ApplicationController
       client=params[:client]
       price=params[:price]
       instructions=params[:special]
+      @contract=Contract.create
+      @contract.client=client
+      @contract.price=price
+      @contract.instructions=instructions
+      @contract.requestedBy=requester
+      if @contract.save
+        redirect_to hire_path, :notice => 'Thank you for your patronage!'
+      else
+        redirect_to hire_path, :notice=>  @contract.errors.to_a
+      end
     end
+    @contract=Contract.create
   end
 
   def managecontracts
